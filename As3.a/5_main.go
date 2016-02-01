@@ -1,0 +1,17 @@
+package main
+
+import "fmt"
+
+func main() {
+
+	for i := 0; i < 100; i++ {
+		if i%2 == 0 {
+			fmt.Println("even :", i)
+		} else {
+			fmt.Println("odd :", i)
+
+		}
+
+	}
+
+}

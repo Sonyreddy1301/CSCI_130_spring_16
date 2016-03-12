@@ -6,9 +6,9 @@ import (
 	"net/http"
 )
 
-func formvalue(w http.ResponseWriter, r *http.Request) {
+func formfile(w http.ResponseWriter, r *http.Request) {
 	key := "text file"
-	file, hdr, err := r.FormValue(key)
+	file, hdr, err := r.FormFile(key)
 	fmt.Println(file, hdr, err)
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	io.WriteString(w, `<form method="POST" enctype="multipart/form-data">
@@ -17,7 +17,7 @@ func formvalue(w http.ResponseWriter, r *http.Request) {
     </form>`)
 }
 func main() {
-	http.HandleFunc("/", formvalue)
+	http.HandleFunc("/", formfile)
 	http.ListenAndServe(":8080", nil)
 
 }

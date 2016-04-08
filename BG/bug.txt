@@ -1,0 +1,4 @@
+CSCI 130
+Sony Reddy Pasunoori
+
+Go Lang doesn’t accept the cookie value with double-quotes, in which it returns a warning while marshalling the object using JSON.

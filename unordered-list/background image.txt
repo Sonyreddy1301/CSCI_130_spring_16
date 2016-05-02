@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"
+	style="background: url('http://www.sctcc.edu/sites/default/files/WebProgramming2_IntroGraphic.png') no-repeat center center fixed;">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+</head>
+<body>
+	<div
+		style="position: fixed; top: 50%; left: 50%; font-size: 40px; color: black;"
+		id="content"></div>
+</body>
+<script type="text/javascript">
+	var content = document.getElementById('content')
+	var qoutes = [ "Interesting","Subject", "Interesting ..." ];
+	var images = [
+			"http://www.sctcc.edu/sites/default/files/WebProgramming2_IntroGraphic.png",
+			"http://previews.123rf.com/images/maxkabakov/maxkabakov1312/maxkabakov131201539/24568078-SEO-web-design-concept-pixelated-words-Web-Programming-on-digital-Stock-Photo.jpg" ];
+	var index = getRandomIndex(qoutes);
+	content.innerHTML = qoutes[index];
+	index = getRandomIndex(images);
+	var style = "background: url('%s') no-repeat center center fixed;".split(
+			'%s').join(images[index]);
+	document.documentElement.setAttribute('style', style);
+	window.setTimeout(function() {
+		location.reload();
+	}, 4000);
+	function getRandomIndex(array) {
+		return Math.floor(Math.random() * array.length);
+	}
+</script>
+</html>

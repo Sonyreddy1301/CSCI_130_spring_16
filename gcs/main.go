@@ -19,13 +19,11 @@ func init() {
 
 func handler(res http.ResponseWriter, req *http.Request) {
 
-	// Creating new context and client.
 	ctx := appengine.NewContext(req)
 	client, err := storage.NewClient(ctx)
 	logStorageError(ctx, "Could not create a new client", err)
 	defer client.Close()
 
-	//Parsing the template
 	tpl := template.Must(template.ParseFiles("index.html"))
 	err = tpl.Execute(res, getPhotoNames(ctx, client))
 	logError(err)
@@ -47,14 +45,12 @@ func getPhotoNames(ctx context.Context, client *storage.Client) []string {
 	return names
 }
 
-// Logs the error given into log
 func logError(err error) {
 	if err != nil {
 		log.Println(err)
 	}
 }
 
-// Logs the error given into storage log
 func logStorageError(ctx context.Context, errMessage string, err error) {
 	if err != nil {
 		storageLog.Errorf(ctx, errMessage, err)
